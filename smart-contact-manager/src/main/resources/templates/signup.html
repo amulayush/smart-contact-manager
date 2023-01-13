@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Home Page</title>
+	</head>
+	
+	<body>
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 offset-md-3">
+						<div class="my-card mt-2 mb-2">
+							<!--
+							<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert" role="alert">
+							 	<p th:text="${session.message.content}"  class="text-center"></p>
+							</div> -->
+							
+							<div class="container text-center">
+								<img class="" style="width: 80px;" src="" th:src="@{/img/register.png}" alt=""/>
+							</div>
+							<h1 class="text-center">Register Here</h1>
+							
+							<form action="" th:action="@{/do_register}" method="post" th:object="${user}">
+								
+								<!-- This is the copied field -->
+								<!-- name-field -->
+								<!-- changed the div class from mb-3 to form-group -->
+								
+								<div class="form-group">
+									
+    								<label for="name-field" 
+    										class="form-label">Your Name</label>
+    								
+								    <input type="text" 
+								    		name="name"
+								    		class="form-control"
+								    		id="name-field" 
+								    		aria-describedby="emailHelp"
+								    		placeholder="Enter here..." 
+								    		required 
+								    		th:value="${user.name}" />
+								    		
+								   
+								    		
+								  </div>
+								  
+								  <!-- now modifying the above field for everything else -->
+								  <!-- email-field -->
+								  
+								  <div class="form-group">
+									
+    								<label for="email-field" 
+    										class="form-label">Your Email</label>
+    								
+								    <input type="email" 
+								    		name="email"
+								    		class="form-control" 
+								    		id="email-field" 
+								    		aria-describedby="emailHelp"
+								    		placeholder="Enter here..." 
+								    		required 
+								    		th:value="${user.email}" />
+								    		
+								  </div>
+								  
+								  
+								  <!-- password field -->
+								  
+								  <div class="form-group">
+									
+    								<label for="password-field" 
+    										class="form-label">Your Password</label>
+    								
+								    <input type="password" 
+								    		name="password"
+								    		class="form-control" 
+								    		id="password-field" 
+								    		aria-describedby="emailHelp"
+								    		placeholder="Enter here..." 
+								    		required/>
+								    		
+								  </div>
+								  
+								  
+								  <!-- about field -->
+								  
+								  <div class="form-group">
+									  
+									  <textarea name="about" th:value="${user.about}" placeholder="Enter something about yourdelf..." rows="6" class="form-control"></textarea>
+					
+								  </div>
+								  
+								  
+								  <!-- terms and conditions -->
+								  
+								  <div class="form-group form-check text-center">
+									  <input type="checkbox"
+									  			name="agreement"
+									  			class="form-check-input"
+									  			id="agreement" />
+									  			
+									  	<label for="agreement">Accept terms and conditions.</label>
+								  </div>
+								  
+								  
+								  <!-- creating buttons -->
+								  
+								  <div class="container text-center">
+									  <button type="submit" class="btn bg-primary text-white">Submit</button>
+								  
+								  
+									  <button type="reset" class="btn bg-primary text-white">Reset</button>
+								  </div>
+								
+							</form>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>
