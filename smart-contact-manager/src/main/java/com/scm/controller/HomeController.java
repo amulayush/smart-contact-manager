@@ -1,6 +1,7 @@
 package com.scm.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.scm.dao.UserRepository;
 import com.scm.entities.User;
-import com.scm.helper.Message;
-
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
@@ -22,7 +21,8 @@ public class HomeController
 	@Autowired
 	private UserRepository userRepository;
 	
-	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 	
 	//This handles the home page
 	
@@ -86,6 +86,7 @@ public class HomeController
 			user.setRole("ROLE_USER");
 			user.setEnabled(true);
 			user.setImageUrl("default.png");
+			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			
 			System.out.println("Agreement : " + agreement);
 			System.out.println("User : " + user);
@@ -124,5 +125,15 @@ public class HomeController
 		
 	}
 
+	
+	// handler for custom login
+	
+	@GetMapping("/signin")
+	public String customLogin(Model model)
+	{
+		model.addAttribute("title", "Login - SCM");
+
+		return "login";
+	}
 
 }

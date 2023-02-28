@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+				th:replace="normal/base::layout(~{::section})">
 	<head>
 		<meta charset="UTF-8"/>
 		<title>User Dashboard</title>
@@ -8,6 +9,9 @@
 	<body>
 		<section>
 		<h1>This is about the dashboard of the normal users, all of them will die!!!!</h1>
+		<h2>User Name : <span th:text="${user.name}"></span></h2>
+		<h2>User Email : <span th:text="${user.email}"></span></h2>
+		<h3><a href="" th:href="@{/logout}">Logout</a></h3>
 		</section>
 	</body>
 </html>
