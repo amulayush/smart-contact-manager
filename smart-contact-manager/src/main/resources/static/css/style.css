@@ -32,3 +32,89 @@ body{
 #login .container #login-row #login-column #login-box #login-form #register-link {
   margin-top: -85px;
 }
+
+
+/* styling sidebar */
+
+@media only screen and (max-width: 600px) {
+	
+	.sidebar {
+		
+		width: 80%;
+		background: lightgray;
+		height:auto;
+		position: fixed;
+		padding-top: 10px;
+		border-radius: 0px 0px 30px 0px;
+		display: none;
+}
+
+	.content {
+	
+		margin-left: 0%;	
+	}
+	
+}
+
+.sidebar {
+	width: 18%;
+	background: lightgray;
+	height: 100%;
+	position: fixed;
+	padding-top: 45px;
+	border-radius: 0px 0px 30px 0px;
+}
+
+.sidebar a {
+	display: block;
+	width: 100%;
+	padding: 10px 25px;
+	text-decoration: none;
+	color: gray;
+}
+
+.sidebar a:hover {
+	background: #e2e2e2;
+}
+
+.sidebar .divider {
+	height: .5px;
+	width: 100%;
+	background: #e2e2e2;
+	margin-top: 10px;
+}
+
+.sidebar .crossBtn {
+	position: absolute;
+	top: 0px;
+	right: 35px;
+	font-size: 36px;
+	
+}
+
+.content {
+	margin-left: 20%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
