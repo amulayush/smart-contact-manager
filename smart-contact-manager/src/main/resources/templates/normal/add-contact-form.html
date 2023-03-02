@@ -19,7 +19,7 @@
 								  th:object = "${contact}"
 								  enctype = "multipart/form-data"
 								  method = "POST"
-								  th:action = "@{/user/process-control}"
+								  th:action = "@{/user/process-contact}"
 								  class = "mt-2">
 								  
 								  
@@ -140,7 +140,7 @@
 								  <!-- contact image field -->
 								  
 								  <div class="custom-file">
-								  	<input type="file" name="imageUrl" />
+								  	<input type="file" name="image" />
 								  </div>
 								  
 								  <div class="container text-center">

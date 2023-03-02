@@ -124,12 +124,12 @@ public class Contact
 	
 	public Contact() {}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "Contact [cId=" + cId + ", name=" + name + ", nickName=" + nickName + ", description=" + description
 				+ ", phone=" + phone + ", work=" + work + ", email=" + email + ", imageUrl=" + imageUrl + ", user="
 				+ user + "]";
-	}
+	}*/
 	
 	
 
