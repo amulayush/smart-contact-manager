@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -18,12 +19,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.scm.dao.ContactRepository;
 import com.scm.dao.UserRepository;
 import com.scm.entities.Contact;
 import com.scm.entities.User;
 import com.scm.helper.Message;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -32,6 +33,9 @@ public class UserController
 {
 	@Autowired
 	private UserRepository userReposiotry;
+	
+	@Autowired
+	private ContactRepository contactRepository;
 	
 	
 	//runs for every method, i.e., every model passed in this controller
@@ -95,7 +99,7 @@ public class UserController
 			{
 				//add some context to the files' name, then upload it to img folder in resources.
 				
-				contact.setImageUrl(user.getId() + file.getOriginalFilename());
+				contact.setImageUrl(file.getOriginalFilename());
 				
 				File savedFile = new ClassPathResource("/static/img").getFile();
 				
@@ -122,6 +126,27 @@ public class UserController
 		}
 		
 		return "normal/add-contact-form";
+	}
+	
+	
+	
+	//show contacts handler
+	
+	@GetMapping("/show-contacts")
+	public String showContacts(Model model, Principal principal)
+	{
+		String userName = principal.getName();
+		
+		User user = this.userReposiotry.getUserByUserName(userName);
+		
+		int userId = user.getId();
+		
+		List <Contact> contacts = this.contactRepository.findContactsByUser(userId);
+		
+		model.addAttribute("contacts", contacts);
+		model.addAttribute("title", "Show Contacts");
+		
+		return "normal/show-contacts";
 	}
 
 	
