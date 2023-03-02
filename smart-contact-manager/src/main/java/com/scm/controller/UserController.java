@@ -21,8 +21,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.scm.dao.UserRepository;
 import com.scm.entities.Contact;
 import com.scm.entities.User;
+import com.scm.helper.Message;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/user")
@@ -75,7 +77,8 @@ public class UserController
 	@PostMapping("/process-contact")
 	public String processContact(@ModelAttribute Contact contact,
 									Principal principal,
-									@RequestParam("image") MultipartFile file)                        
+									@RequestParam("image") MultipartFile file,
+									HttpSession session)                        
 	{
 		try 
 		{
@@ -109,8 +112,12 @@ public class UserController
 			System.out.println("Added it");
 			System.out.println("Data : " + contact);
 			
+			session.setAttribute("message", new Message("Yooo we added it!", "success"));
+			
 		} catch (Exception e) 
 		{
+			session.setAttribute("message", new Message("Shit hit the fan.", "danger"));
+
 			System.out.println("Error : " + e.getMessage());
 		}
 		
