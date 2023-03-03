@@ -8,7 +8,7 @@
 
 <body>
 	<section>
-		<div class="card mr-3 ml-3">
+		<div class="card mr-3 ml-3" th:if="${contact}">
 			<div class="card-body">
 				<div class="container text-center">
 					<div class="naming-container">
@@ -32,36 +32,41 @@
 								<th scope="row">Email</th>
 								<td><span th:text="${contact.email}"></span></td>
 							</tr>
-							
+
 							<tr>
 								<th scope="row">Phone</th>
 								<td><span th:text="${contact.phone}"></span></td>
 							</tr>
-							
+
 							<tr>
 								<th scope="row">Work</th>
 								<td><span th:text="${contact.work}"></span></td>
 							</tr>
 						</tbody>
-						
+
 					</table>
-					
-					<hr/>
-					
-					<div class="description mt-5">
-							<th:block th:utext="${contact.description}"></th:block>
-					</div>
-			
+
 					<hr />
-					
+
+					<div class="description mt-5">
+						<th:block th:utext="${contact.description}"></th:block>
+					</div>
+
+					<hr />
+
 					<div class="container mt-3">
-					<button class="btn btn-primary btn-lg  mr-2">Update</button>
-					<button class="btn btn-danger btn-lg">Delete</button>
+						<button class="btn btn-primary btn-lg  mr-2">Update</button>
+						<button class="btn btn-danger btn-lg">Delete</button>
 					</div>
 
 				</div>
 			</div>
 		</div>
+
+		<h1 class="text-center p-3 bg-danger text-white mr-3 ml-3"
+			th:unless="${contact}">You don't have permission to see this
+			Contact.</h1>
+
 	</section>
 </body>
 </html>
