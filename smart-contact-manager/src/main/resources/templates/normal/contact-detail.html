@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Contact Details</title>
+</head>
+
+<body>
+	<section>
+		<div class="card mr-3 ml-3">
+			<div class="card-body">
+				<div class="container text-center">
+					<div class="naming-container">
+						<img style="height: 200px; width: 200px; pdding: 20px;" src=""
+							class="contact-dp mr-10"
+							th:src="@{'/img/' + ${contact.imageUrl}}" />
+						<h1 class="naming-container-h1 ml-10">
+							<span class="" th:text=${contact.name}>Name</span> (<span
+								class="" th:text=${contact.nickName}>nickName</span>)
+						</h1>
+					</div>
+					<table class="table mt-5">
+						<thead>
+							<tr>
+								<th scope="col">ID</th>
+								<th scope="col"><span th:text="${contact.cId}"></span></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">Email</th>
+								<td><span th:text="${contact.email}"></span></td>
+							</tr>
+							
+							<tr>
+								<th scope="row">Phone</th>
+								<td><span th:text="${contact.phone}"></span></td>
+							</tr>
+							
+							<tr>
+								<th scope="row">Work</th>
+								<td><span th:text="${contact.work}"></span></td>
+							</tr>
+						</tbody>
+						
+					</table>
+					
+					<hr/>
+					
+					<div class="description mt-5">
+							<th:block th:utext="${contact.description}"></th:block>
+					</div>
+			
+					<hr />
+					
+					<div class="container mt-3">
+					<button class="btn btn-primary btn-lg  mr-2">Update</button>
+					<button class="btn btn-danger btn-lg">Delete</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

@@ -98,6 +98,24 @@ body{
 }
 
 
+.contact-dp {
+	width: 30px;
+	height: 30px;
+	object-fit: cover;
+	border-radius: 50%;
+}
+
+.naming-container {
+	display:flex;
+	align-items: center;
+}
+
+.naming-container-h1 {
+	padding-left: 250px;
+	font-size: 70px;
+	
+}
+
 
 
 

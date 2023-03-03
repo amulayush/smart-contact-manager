@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -97,6 +98,7 @@ public class UserController
 			
 			if(file.isEmpty())
 			{
+				contact.setImageUrl("contact.png");
 				System.out.println("There is no image");
 			}
 			else
@@ -161,6 +163,23 @@ public class UserController
 		return "normal/show-contacts";
 	}
 
+	
+	//show particular contacts' details
+	
+	@GetMapping("/contact/{cId}")
+	public String showContactDetails(@PathVariable("cId") Integer cId, Model model)
+	{
+		Optional<Contact> contactOptional = this.contactRepository.findById(cId);
+		
+		Contact contact = contactOptional.get();
+		
+		model.addAttribute("contact", contact);
+		model.addAttribute("title", "Contact Information");
+
+		
+		System.out.println("Cid : " + cId );
+		return "normal/contact-detail";
+	}
 	
 }
 
