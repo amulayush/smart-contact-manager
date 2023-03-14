@@ -3,24 +3,34 @@
 	th:replace="normal/base::layout(~{::section})">
 <head>
 <meta charset="UTF-8" />
-<title>Add Contact</title>
+<title>User Dashboard</title>
 </head>
 
 <body>
 	<section>
-
 		<div class="card mr-4 ml-3">
 			<div class="card-body">
 				<h1 class="text-center">
-					<i class="fa-solid fa-address-book"></i> Add Contact
+					<i class="fa-solid fa-address-book"></i> Update Contact
 				</h1>
+
+				<div class="naming-container text-center mt-3 mb-5 ml-5 ml-5">
+					<img style="height: 200px; width: 200px;" src=""
+						class="contact-dp mr-10" th:src="@{'/img/' + ${contact.imageUrl}}" />
+					<h1 class="naming-container-h1 ml-10">
+						<span class="" th:text=${contact.name}>Name</span> (<span class=""
+							th:text=${contact.nickName}>nickName</span>)
+					</h1>
+				</div>
 
 				<div class="row">
 					<div class="col-md-10 offset-md-1">
 						<form action="#" th:object="${contact}"
 							enctype="multipart/form-data" method="POST"
-							th:action="@{/user/process-contact}" class="mt-2">
+							th:action="@{/user/update-contact-process}" class="mt-2">
 
+
+						<input type="hidden" th:value="${contact.cId}" name = "cId" />
 
 							<!-- first name -->
 
@@ -34,12 +44,9 @@
 
 								</div>
 
-								<input type="text" 
-										id="firstName" 
-										name="name"
-										placeholder="Enter the name" 
-										class="form-control" 
-										required />
+								<input type="text" id="firstName" th:value="${contact.name}"
+									name="name" placeholder="Enter the name" class="form-control"
+									required />
 							</div>
 
 
@@ -57,8 +64,9 @@
 
 								</div>
 
-								<input type="text" id="nickName" name="nickName"
-									placeholder="Enter the nickname" class="form-control" />
+								<input type="text" th:value="${contact.nickName}" id="nickName"
+									name="nickName" placeholder="Enter the nickname"
+									class="form-control" />
 							</div>
 
 
@@ -74,9 +82,9 @@
 
 								</div>
 
-								<input type="number" id="phone" name="phone"
-									placeholder="Enter the phone number" class="form-control"
-									required min="10" />
+								<input type="number" id="phone" th:value="${contact.phone}"
+									name="phone" placeholder="Enter the phone number"
+									class="form-control" required min="10" />
 							</div>
 
 
@@ -93,8 +101,9 @@
 
 								</div>
 
-								<input type="email" id="email" name="email"
-									placeholder="Enter the email id" class="form-control" reuired />
+								<input type="email" th:value="${contact.email}" id="email"
+									name="email" placeholder="Enter the email id"
+									class="form-control" reuired />
 							</div>
 
 
@@ -111,8 +120,9 @@
 
 								</div>
 
-								<input type="text" id="work" name="work"
-									placeholder="Enter their workplace" class="form-control" />
+								<input type="text" id="work" th:value="${contact.work}"
+									name="work" placeholder="Enter their workplace"
+									class="form-control" />
 							</div>
 
 
@@ -122,8 +132,9 @@
 
 							<div class="form-group mt-3">
 
-								<textarea rows="10" name="description" id="mytextarea"
-									class="form-control" placeholder="Enter their description"></textarea>
+								<textarea rows="15" th:utext="${contact.description}"
+									name="description" id="mytextarea" class="form-control"
+									placeholder="Enter their description"></textarea>
 
 							</div>
 
@@ -146,6 +157,7 @@
 
 			</div>
 		</div>
+
 
 		<script
 			src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"

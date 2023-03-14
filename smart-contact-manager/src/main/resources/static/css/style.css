@@ -117,6 +117,13 @@ body{
 }
 
 
+.myDamnedButtons {
+	display: flex;
+	align-items: right;
+	padding-left: 450px;
+}
+
+
 
 
 
